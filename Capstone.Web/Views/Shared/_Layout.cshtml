@@ -1,0 +1,29 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>National Park Geek</title>
+    <link rel="stylesheet" href="~/Content/styles.css">
+</head>
+<body>
+    <header>
+        <h1>National Park Geek</h1>
+    </header>
+    <nav>        
+        <ul>
+            <li>@Html.ActionLink("Home Page", "Index", "Home")</li>
+            <li>@Html.ActionLink("Survey", "Survey", "Home")</li>
+            
+        </ul>
+    </nav>
+
+    @RenderBody()
+
+</body>
+</html>
