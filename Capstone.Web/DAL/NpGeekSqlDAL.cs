@@ -11,7 +11,8 @@ namespace Capstone.Web.DAL
     {
         private string connectionString;
         private const string SQL_GetParks = "SELECT * FROM park;";
-        private const string SQL_GetPark = @"SELECT * FROM park WHERE park_parkCode = (@park_parkCode);";
+        //private const string SQL_GetPark = @"SELECT * FROM park WHERE park_parkCode = (@park_parkCode);";
+
         public NpGeekSqlDAL(string connectionString)
         {
             this.connectionString = connectionString;

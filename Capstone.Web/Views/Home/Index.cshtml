@@ -1,8 +1,30 @@
-﻿
+﻿@using Capstone.Web.Models;
+@model List<Park>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
 
+<section id="main-content">
+       
+    <div class="flex-container-list" style="border-bottom: 1px solid black">
+        @{foreach (var park in Model)
+            {
+                <div class="flex-img">
+                    <p><img src="~/Content/img/parks/@(park.ParkCode).jpg" /></p>
+                </div>
+
+                <div class="flex-cont">
+                    <p><strong style="font-size:16px">@Html.ActionLink(park.ParkName, "Detail", "Home", new { id = park.ParkCode }, null)</strong></p>
+
+                    <p style="font-size:10px;">@(park.State )</p>
+                    
+                    <p style="font-size:10px;">@(park.ParkDescription)</p>
+                    
+                </div>
+                }
+            }
+
+    </div>
+</section>

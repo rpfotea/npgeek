@@ -17,7 +17,7 @@ namespace Capstone.Web.Controllers
             this.npGeekDal = npGeekDal;
         }
 
-        [HttpGet]
+        //[HttpGet]
         // GET: Home
         public ActionResult Index()
         {
