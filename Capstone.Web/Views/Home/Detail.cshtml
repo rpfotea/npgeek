@@ -1,8 +1,43 @@
-﻿
+﻿@using Capstone.Web.Models;
+@model Park
 @{
     ViewBag.Title = "Detail";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Detail</h2>
+<section id="main-content">
+
+    <div class="flex-container-list" >
+
+        <div class="flex-img">
+           <img src="~/Content/img/parks/@(Model.ParkCode).jpg" /> 
+        </div>
+
+        <div class="flex-cont">
+            <p><strong style="font-size:20px">Model.ParkName</strong></p>
+            <p>State: @Model.State</p>
+            <p>Acreage: @Model.Acreage</p>
+            <p>Elevation(feet): @Model.ElevationInFeet</p>
+            <p>Miles of Trail: @Model.MilesOfTrail</p>
+            <p>Nmber of Campsites: @Model.NumberOfCampsites</p>
+            <p>Climate: @Model.Climate</p>
+            <p>Year Founded: @Model.YearFounded</p>
+            <p>Anual Visitor Count: @Model.AnnualVisitorCount</p>
+            <p>Inspirational Quote: @Model.InspirationalQuote</p>
+            <p>Inspirational Quote Source: @Model.InspirationalQuoteSource</p>
+            <p>Park Description: @Model.ParkDescription</p>
+            <p>Entry Fee: @Model.EntryFee</p>
+            <p>Number of Animal Species: @Model.NumberOfAnimalSpecies</p>
+
+            <p style="font-size:14px;">@(Model.ParkDescription)</p>
+
+        </div>
+        }
+        
+
+    </div>
+</section>
+
+
+
 

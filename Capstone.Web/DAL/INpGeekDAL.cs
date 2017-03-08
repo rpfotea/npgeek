@@ -9,6 +9,6 @@ namespace Capstone.Web.DAL
     public interface INpGeekDAL
     {
         List<Park> GetParks();
-        //Park GetPark(int id);
+        Park GetParkForDisplay(string id);
     }
 }

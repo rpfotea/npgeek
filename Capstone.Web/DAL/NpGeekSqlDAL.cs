@@ -11,7 +11,7 @@ namespace Capstone.Web.DAL
     {
         private string connectionString;
         private const string SQL_GetParks = "SELECT * FROM park;";
-        //private const string SQL_GetPark = @"SELECT * FROM park WHERE park_parkCode = (@park_parkCode);";
+        private const string SQL_GetPark = @"SELECT * FROM park WHERE parkCode = @parkCode;";
 
         public NpGeekSqlDAL(string connectionString)
         {
@@ -65,10 +65,69 @@ namespace Capstone.Web.DAL
                         parkObj.NumberOfAnimalSpecies = numberofanimalspecies;
 
                         output.Add(parkObj);
+                   }
+                    return output;
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+        }
 
+            public Park GetParkForDisplay(string id)
+        {
+            Park output = new Park();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(SQL_GetPark, conn);
+                    cmd.Parameters.AddWithValue("@parkCode", id);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    Park parkObj = new Park();
+
+                    while (reader.Read())
+                    {
+                        string parkcode = Convert.ToString(reader["parkcode"]);
+                        string parkname = Convert.ToString(reader["parkname"]);
+                        string state = Convert.ToString(reader["state"]);
+                        int acreage = Convert.ToInt32(reader["acreage"]);
+                        int elevationinfeet = Convert.ToInt32(reader["elevationinfeet"]);
+                        double milesoftrail = Convert.ToDouble(reader["milesoftrail"]);
+                        int numberofcampsites = Convert.ToInt32(reader["numberofcampsites"]);                       
+                        string climate = Convert.ToString(reader["climate"]);                    
+                        int yearfounded = Convert.ToInt32(reader["yearfounded"]);
+                        int annualvisitorcount = Convert.ToInt32(reader["annualvisitorcount"]);
+                        string inspirationalquote = Convert.ToString(reader["inspirationalquote"]);
+                        string inspirationalquotesource = Convert.ToString(reader["inspirationalquotesource"]);
+                        string parkdescription = Convert.ToString(reader["parkdescription"]);
+                        int entryfee = Convert.ToInt32(reader["entryfee"]);
+                        int numberofanimalspecies = Convert.ToInt32(reader["numberofanimalspecies"]);
+                        
+                        parkObj.ParkCode = parkcode;
+                        parkObj.ParkName = parkname;
+                        parkObj.State = state;
+                        parkObj.Acreage = acreage;
+                        parkObj.ElevationInFeet = elevationinfeet;
+                        parkObj.MilesOfTrail = milesoftrail;
+                        parkObj.NumberOfCampsites = numberofcampsites;
+                        parkObj.Climate = climate;
+                        parkObj.YearFounded = yearfounded;
+                        parkObj.AnnualVisitorCount = annualvisitorcount;
+                        parkObj.InspirationalQuote = inspirationalquote;
+                        parkObj.InspirationalQuoteSource = inspirationalquotesource;
+                        parkObj.ParkDescription = parkdescription;
+                        parkObj.EntryFee = entryfee;
+                        parkObj.NumberOfAnimalSpecies = numberofanimalspecies;
+                        
                     }
 
-                    return output;
+                    return parkObj;
 
                 }
             }

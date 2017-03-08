@@ -17,11 +17,19 @@ namespace Capstone.Web.Controllers
             this.npGeekDal = npGeekDal;
         }
 
-        //[HttpGet]
-        // GET: Home
+       
         public ActionResult Index()
         {
-            return View("Index");
+            return View("Index", npGeekDal.GetParks());
         }
+
+        public ActionResult Detail(string id)
+        {
+            // var park = GetParkForDisplay().Find(park => park.ParkCode == id.ToUpper());
+            Park park = npGeekDal.GetParkForDisplay(id);
+            return View("Detail", park);
+        }
+
+        
     }
 }

@@ -5,7 +5,7 @@
 
 
 header {
-    margin: 20px;
+    margin: 30px;
 }
 
     header h1 {
@@ -23,7 +23,7 @@ header {
 
 nav {
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
 }
 
     /*nav h2 {
@@ -52,9 +52,10 @@ nav ul {
         list-style: none;
         text-align: center;
         width: 200px;
-        padding-top: 5px;
+        height: 30px;
+        padding-top: 2px;
+        padding-bottom: 5px;
     }
-
 nav:after {
     clear: both;
 }
@@ -69,9 +70,10 @@ section {
     margin: 20px auto;
     vertical-align: top;
     text-align: center;
-    min-height: 450px;
+    min-height: 420px;
     background-color: #FFF;
     border-radius: 7px;
+    margin-top: 20px;
 }
 /*-------------Index-----------------------------------------*/
 
@@ -89,16 +91,15 @@ section {
 .flex-img {
     margin: 1;
     list-style: none;
-    width: 200px;
-    height: 200px;
-    border-bottom: 1px solid black;
+    width: 500px;
+    height: 380px;
+  
     margin-bottom: 1px;
 }
 
 .flex-cont {
     margin: 1px;
-    width: 790px;
-    height: 200px;
-    border-bottom: 1px solid black;
-    text-align: left;
+    width: 450px;
+    height: 380px;
+  text-align: left;
 }
