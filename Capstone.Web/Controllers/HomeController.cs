@@ -11,10 +11,12 @@ namespace Capstone.Web.Controllers
     public class HomeController : Controller
     {
         private readonly INpGeekDAL npGeekDal;
+        private readonly IWeatherDAL weatherDal;
 
-        public HomeController(INpGeekDAL npGeekDal)
+        public HomeController(INpGeekDAL npGeekDal, IWeatherDAL weatherDal)
         {
             this.npGeekDal = npGeekDal;
+            this.weatherDal = weatherDal;
         }
 
        
@@ -29,7 +31,16 @@ namespace Capstone.Web.Controllers
             Park park = npGeekDal.GetParkForDisplay(id);
             return View("Detail", park);
         }
+        //----------------------------------------------------------------------------------
 
+        
+
+        public ActionResult Forecast(string id)
+        {
+            List<Weather> weather = new List<Weather>();
+            weather=weatherDal.GetWeathers(id);
+            return View("Forecast", weather);
+        }
         
     }
 }

@@ -1,0 +1,73 @@
+﻿@using Capstone.Web.Models;
+@model List<Weather>
+@{
+    ViewBag.Title = "Forecast";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<section id="forecast-content">
+    <h2 id="title">5 Days Weather Forecast</h2>
+    <div>
+        <table>
+            <tr>
+                <td></td>
+                @{ foreach (var weather in Model)
+                    {
+                        string image = weather.Forecast;
+                        if (weather.Forecast == "partly cloudy")
+                        {
+                            image = "partlycloudy";
+                        }
+
+                        <td><img  style="height:150px;width:150px" src="~/Content/img/weather/@(image).png" /></td>
+                    }
+                }
+                <td></td>
+            </tr>
+                     
+            <tr>
+                <td class="day"><strong>Day</strong></td>
+                @{ foreach (var weather in Model)
+                    {
+                        <td>@(weather.FiveDayForecastValue)</td>
+                    }
+                }
+            </tr>
+            <tr>
+                <td><strong>Low Temperature</strong></td>
+                @{ foreach (var weather in Model)
+                    {
+                        <td id="low"><strong>@(weather.Low)</td>
+                    }
+                }
+            </tr>
+            <tr>
+                <td><strong>High Temperature</strong></td>
+                @{ foreach (var weather in Model)
+                    {
+                        <td id="high"><strong>@(weather.High)</strong></td>
+                    }
+                }
+            </tr>
+            <tr>
+                <td class="forecast"><strong>Forecast</strong></td>
+                @{ foreach (var weather in Model)
+                    {
+                        <td>@(weather.Forecast)</td>
+                    }
+                }
+            </tr>
+            <tr>
+                <td class="forecast"><strong>Recomendation</strong></td>
+                @{ foreach (var weather in Model)
+                    {
+                        <td>@(weather.GetRecomendation(weather.Forecast, weather.Low, weather.High ))</td>
+                    }
+                }
+            </tr>
+
+        </table>
+    </div>
+</section>

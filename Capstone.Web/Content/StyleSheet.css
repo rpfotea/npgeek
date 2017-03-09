@@ -103,3 +103,33 @@ section {
     height: 380px;
   text-align: left;
 }
+
+/*-----------------Forecast-------------------------------------------------*/
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+#high
+{
+   color:red;
+}
+#low
+{
+   color:blue;
+}
+#forecast-content
+{
+    padding-bottom:20px;
+    padding-left:20px;
+}

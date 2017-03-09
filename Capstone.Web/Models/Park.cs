@@ -24,11 +24,5 @@ namespace Capstone.Web.Models
         public int EntryFee { get; set; }
         public int NumberOfAnimalSpecies { get; set; }
 
-        //public static Dictionary<string parkCode, string park> Parks = new Dictionary<string parkCode, string park>()
-        //{
-            
-        //    //new SelectListItem() { Text = "Mercury" },
-
-        //};
     }
 }

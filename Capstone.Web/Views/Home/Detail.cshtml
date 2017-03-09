@@ -5,37 +5,29 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<section id="main-content">
-
-    <div class="flex-container-list" >
-
-        <div class="flex-img">
-           <img src="~/Content/img/parks/@(Model.ParkCode).jpg" /> 
-        </div>
-
-        <div class="flex-cont">
-            <p><strong style="font-size:20px">Model.ParkName</strong></p>
-            <p>State: @Model.State</p>
-            <p>Acreage: @Model.Acreage</p>
-            <p>Elevation(feet): @Model.ElevationInFeet</p>
-            <p>Miles of Trail: @Model.MilesOfTrail</p>
-            <p>Nmber of Campsites: @Model.NumberOfCampsites</p>
-            <p>Climate: @Model.Climate</p>
-            <p>Year Founded: @Model.YearFounded</p>
-            <p>Anual Visitor Count: @Model.AnnualVisitorCount</p>
-            <p>Inspirational Quote: @Model.InspirationalQuote</p>
-            <p>Inspirational Quote Source: @Model.InspirationalQuoteSource</p>
-            <p>Park Description: @Model.ParkDescription</p>
-            <p>Entry Fee: @Model.EntryFee</p>
-            <p>Number of Animal Species: @Model.NumberOfAnimalSpecies</p>
-
-            <p style="font-size:14px;">@(Model.ParkDescription)</p>
-
-        </div>
-        }
-        
-
+<section id="detail-content" >
+                  
+        <img style="float:right;width:550px;height:370px; margin:20px 20px 0px 0px" src="~/Content/img/parks/@(Model.ParkCode).jpg" />
+              
+        <p><strong style="font-size:24px">@Model.ParkName</strong></p>
+    <div style="text-align:left; margin-left:70px; margin-bottom:20px">
+        <p><strong>State:</strong> @Model.State</p>
+        <p><strong>Acreage:</strong> @Model.Acreage</p>
+        <p><strong>Elevation(feet):</strong> @Model.ElevationInFeet</p>
+        <p><strong>Miles of Trail:</strong> @Model.MilesOfTrail</p>
+        <p><strong>Nmber of Campsites:</strong> @Model.NumberOfCampsites</p>
+        <p><strong>Climate:</strong> @Model.Climate</p>
+        <p><strong>Year Founded:</strong> @Model.YearFounded</p>
+        <p><strong>Anual Visitor Count:</strong> @Model.AnnualVisitorCount</p>     
+        <p><strong>Entry Fee:</strong> $@Model.EntryFee</p>
+        <p><strong>Number of Animal Species:</strong> @Model.NumberOfAnimalSpecies</p>       
+        <p><strong>Inspirational Quote:</strong> @Model.InspirationalQuote</p>
+        <p><strong>Inspirational Quote Source:</strong> @Model.InspirationalQuoteSource</p>  
+        <p><strong>Park Description:</strong> @Model.ParkDescription</p> 
+     
     </div>
+    <p><strong style="font-size:16px; text-align:center">@Html.ActionLink("5-day Weather Forecast", "Forecast", "Home", new { id = Model.ParkCode }, null)</strong></p>
+   
 </section>
 
 
