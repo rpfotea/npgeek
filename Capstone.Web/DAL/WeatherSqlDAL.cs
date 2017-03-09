@@ -45,6 +45,9 @@ namespace Capstone.Web.DAL
                         weatherObj.FiveDayForecastValue = fivedayforecastvalue;
                         weatherObj.Low = low;
                         weatherObj.High = high;
+                        //weatherObj.Low = ConverterFToC(low);
+                        //weatherObj.High = ConverterFToC(high);
+
                         weatherObj.Forecast = forecast;
                         
                         output.Add(weatherObj);

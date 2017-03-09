@@ -39,7 +39,7 @@
                 <td><strong>Low Temperature</strong></td>
                 @{ foreach (var weather in Model)
                     {
-                        <td id="low"><strong>@(weather.Low)</td>
+                        <td id="low"><strong>@(weather.Low)</strong></td>
                     }
                 }
             </tr>
@@ -60,7 +60,7 @@
                 }
             </tr>
             <tr>
-                <td class="forecast"><strong>Recomendation</strong></td>
+                <td class="forecast"><strong>Weather Advice</strong></td>
                 @{ foreach (var weather in Model)
                     {
                         <td>@(weather.GetRecomendation(weather.Forecast, weather.Low, weather.High ))</td>

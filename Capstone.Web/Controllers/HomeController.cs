@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace Capstone.Web.Controllers
 {
@@ -19,7 +20,7 @@ namespace Capstone.Web.Controllers
             this.weatherDal = weatherDal;
         }
 
-       
+
         public ActionResult Index()
         {
             return View("Index", npGeekDal.GetParks());
@@ -31,16 +32,39 @@ namespace Capstone.Web.Controllers
             Park park = npGeekDal.GetParkForDisplay(id);
             return View("Detail", park);
         }
-        //----------------------------------------------------------------------------------
 
-        
 
-        public ActionResult Forecast(string id)
+        //public ActionResult Forecast(string id)
+        //{
+        //    List<Weather> weather = new List<Weather>();
+        //    weather = weatherDal.GetWeathers(id);
+        //    return View("Forecast", weather);
+
+        //}
+        [HttpGet]
+        public ActionResult Forecast(string parkId)
+
         {
-            List<Weather> weather = new List<Weather>();
-            weather=weatherDal.GetWeathers(id);
-            return View("Forecast", weather);
+            string unit;
+            if (Session["TempUnit"] != null)
+            {
+                unit = Session["TempUnit"] as string;
+
+            }
+            else
+            {
+                unit = "fahrenheit";
+            }
+            Session["TempUnit"] = unit;
+            return View("Forecast", weatherDal.GetWeathers(parkId));
+
         }
-        
+        [HttpPost]
+        public ActionResult Forecast(string tempUnit)
+        {
+            Session["TempUnit"] = tempUnit;
+            Redirect("Forecast");
+        }
+
     }
 }
