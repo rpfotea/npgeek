@@ -13,6 +13,5 @@ namespace Capstone.Web.DAL
     {
         bool SaveSurvey(Survey newSurvey);
 
-        List<Survey> GetSummarySurveys();
     }
 }

@@ -5,34 +5,35 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Survey</h2>
+<section id="main-content">
+    <h2>Survey</h2>
 
-@using (Html.BeginForm("Survey", "Home", FormMethod.Post))
-{
+    @using (Html.BeginForm("Survey", "Home", FormMethod.Post))
+    {
 
-    <div>
-        @Html.Label("ParkCode","Choose a Park:")
-        @Html.DropDownListFor(m=>m.ParkCode, Survey.ParksCode )
-        <br />
-    </div>
-    <div>
-        [Request]
-        @Html.Label("EmailAddress","E-mail:")
-        @Html.TextBoxFor(m=>m.EmailAddress)
-        <br />
-    </div>
-    <div>
-        @Html.Label("State", "State of residency:")
-        @Html.DropDownListFor(m=>m.State, Survey.States)
-        <br />
-    </div>
-    <div>
-        @Html.Label("ActivityLevel","Activity level:")
-        @Html.DropDownListFor(m=>m.ActivityLevel, Survey.ActivityLevels)
-        <br />
-    </div>
+        <div>
+            @Html.Label("ParkCode", "Choose a Park:")
+            @Html.DropDownListFor(m => m.ParkCode, Survey.ParksCode)
+            <br />
+        </div>
+        <div>
+            [Request]
+            @Html.Label("EmailAddress", "E-mail:")
+            @Html.TextBoxFor(m => m.EmailAddress)
+            <br />
+        </div>
+        <div>
+            @Html.Label("State", "State of residency:")
+            @Html.DropDownListFor(m => m.State, Survey.States)
+            <br />
+        </div>
+        <div>
+            @Html.Label("ActivityLevel", "Activity level:")
+            @Html.DropDownListFor(m => m.ActivityLevel, Survey.ActivityLevels)
+            <br />
+        </div>
 
-    <button>Submit</button>
+        <button>Submit</button>
 
-}
-
+    }
+</section>

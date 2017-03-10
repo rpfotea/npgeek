@@ -14,12 +14,14 @@ namespace Capstone.Web.Controllers
         private readonly INpGeekDAL npGeekDal;
         private readonly IWeatherDAL weatherDal;
         private readonly ISurveyDAL surveyDal;
+        private readonly ISummarySurveysDAL summarySurveysDal;
 
-        public HomeController(INpGeekDAL npGeekDal, IWeatherDAL weatherDal, ISurveyDAL surveyDal)
+        public HomeController(INpGeekDAL npGeekDal, IWeatherDAL weatherDal, ISurveyDAL surveyDal, ISummarySurveysDAL summarySurveysDal)
         {
             this.npGeekDal = npGeekDal;
             this.weatherDal = weatherDal;
             this.surveyDal = surveyDal;
+            this.summarySurveysDal = summarySurveysDal;
         }
 
 
@@ -96,7 +98,7 @@ namespace Capstone.Web.Controllers
         [HttpGet]
         public ActionResult SummarySurveys()
         {
-            return View("SummarySurveys");
+            return View("SummarySurveys", summarySurveysDal.GetSummarySurveys());
         }
 
     }

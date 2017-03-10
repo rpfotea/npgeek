@@ -7,5 +7,7 @@ namespace Capstone.Web.Models
 {
     public class SummarySurveys
     {
+        public string ParkName { get; set; }
+        public int TotalSurveys { get; set; }
     }
 }

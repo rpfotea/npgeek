@@ -1,9 +1,22 @@
 ﻿@using Capstone.Web.Models
-@model List<Survey>
+@model List<SummarySurveys>
 @{
     ViewBag.Title = "ListSurvey";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>ListSurvey</h2>
+
+<section id="main-content">
+    <h2>ListSurvey</h2>
+    <div>
+        @{foreach (var parks in Model)
+            {
+                <p style="font-size:20px;">@parks.ParkName</p>
+                <p style="font-size:20px;">@(parks.TotalSurveys)</p>
+            }
+        }
+
+    </div>
+
+</section>
 
