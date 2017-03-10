@@ -13,11 +13,13 @@ namespace Capstone.Web.Controllers
     {
         private readonly INpGeekDAL npGeekDal;
         private readonly IWeatherDAL weatherDal;
+        private readonly ISurveyDAL surveyDal;
 
-        public HomeController(INpGeekDAL npGeekDal, IWeatherDAL weatherDal)
+        public HomeController(INpGeekDAL npGeekDal, IWeatherDAL weatherDal, ISurveyDAL surveyDal)
         {
             this.npGeekDal = npGeekDal;
             this.weatherDal = weatherDal;
+            this.surveyDal = surveyDal;
         }
 
 
@@ -34,36 +36,67 @@ namespace Capstone.Web.Controllers
         }
 
 
-        //public ActionResult Forecast(string id)
-        //{
-        //    List<Weather> weather = new List<Weather>();
-        //    weather = weatherDal.GetWeathers(id);
-        //    return View("Forecast", weather);
-
-        //}
-        [HttpGet]
-        public ActionResult Forecast(string parkId)
-
+        public ActionResult Forecast(string id)
         {
-            string unit;
-            if (Session["TempUnit"] != null)
-            {
-                unit = Session["TempUnit"] as string;
-
-            }
-            else
-            {
-                unit = "fahrenheit";
-            }
-            Session["TempUnit"] = unit;
-            return View("Forecast", weatherDal.GetWeathers(parkId));
+            List<Weather> weather = new List<Weather>();
+            weather = weatherDal.GetWeathers(id);
+            return View("Forecast", weather);
 
         }
-        [HttpPost]
-        public ActionResult Forecast(string tempUnit)
+        //[HttpGet]
+        //public ActionResult Forecast(string parkId)
+
+        //{
+        //    string unit;
+        //    if (Session["TempUnit"] != null)
+        //    {
+        //        unit = Session["TempUnit"] as string;
+
+        //    }
+        //    else
+        //    {
+        //        unit = "fahrenheit";
+        //    }
+        //    Session["TempUnit"] = unit;
+
+        //    if (unit == "fahrenheit")
+        //    {
+        //        return View("Forecast", weatherDal.GetWeathers(parkId));
+        //    }
+        //    else
+        //    {
+
+
+        //    }
+        //}
+        //[HttpPost]
+        //    public ActionResult Forecast(string tempUnit)
+        //    {
+        //        Session["TempUnit"] = tempUnit;
+        //        Redirect("Forecast", weatherDal.GetWeathers(parkId)));
+        //    }
+
+
+        //  --------------------------------Survey----------------------------------------------
+
+        [HttpGet]
+        public ActionResult Survey()
         {
-            Session["TempUnit"] = tempUnit;
-            Redirect("Forecast");
+            return View("Survey");
+        }
+
+        [HttpPost]
+        public ActionResult Survey(Survey survey)
+        {
+            surveyDal.SaveSurvey(survey);
+
+            return RedirectToAction("SummarySurveys");
+        }
+
+        [HttpGet]
+        public ActionResult SummarySurveys()
+        {
+            return View("SummarySurveys");
         }
 
     }
