@@ -9,5 +9,6 @@ namespace Capstone.Web.Models
     {
         public string ParkName { get; set; }
         public int TotalSurveys { get; set; }
+        public string ParkCode { get; set; }
     }
 }

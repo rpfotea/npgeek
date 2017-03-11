@@ -6,17 +6,31 @@
 }
 
 
-<section id="main-content">
-    <h2>ListSurvey</h2>
-    <div>
-        @{foreach (var parks in Model)
-            {
-                <p style="font-size:20px;">@parks.ParkName</p>
-                <p style="font-size:20px;">@(parks.TotalSurveys)</p>
+<section>
+
+    <h1><strong>List Top Park Surveys</strong></h1>
+           <table>
+            <tr>
+                <th><strong>Park Image</strong></th>
+                <th><strong>Park Name</strong></th>
+                <th><strong>Surveys submitted</strong></th>
+            </tr>
+
+            @{ foreach (var parks in Model)
+
+                {
+                    <tr>
+                        <td><p><img style="width:130px;height:130px" src="~/Content/img/parks/@(parks.ParkCode).jpg" /></p></td>
+                        <td><p style="font-size:20px;">@parks.ParkName</p></td>
+                        <td><p style="font-size:20px;">@(parks.TotalSurveys)</p></td>
+                    </tr>
+                }
+
             }
-        }
 
-    </div>
-
+        </table>
+    
 </section>
+
+
 

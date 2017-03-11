@@ -10,7 +10,7 @@ namespace Capstone.Web.DAL
     public class SummarySurveysSqlDAL : ISummarySurveysDAL
     {
         private string connectionString;
-        private const string SQL_GetAllSurveys = "SELECT park.parkName, COUNT(survey_result.parkCode) AS Total_Survey_Park FROM survey_result INNER JOIN park ON survey_result.parkCode=park.parkCode GROUP BY park.parkName ORDER BY Total_Survey_Park DESC ";
+        private const string SQL_GetAllSurveys = "SELECT park.parkName, park.parkCode, COUNT(survey_result.parkCode) AS Total_Survey_Park FROM survey_result INNER JOIN park ON survey_result.parkCode=park.parkCode GROUP BY park.parkName, park.parkCode ORDER BY Total_Survey_Park DESC ";
 
         public SummarySurveysSqlDAL(string connectionString)
         {
@@ -33,9 +33,11 @@ namespace Capstone.Web.DAL
                     while (reader.Read())
                     {
                         string parkname = Convert.ToString(reader["parkname"]);
+                        string parkcode = Convert.ToString(reader["parkcode"]);
                         string totalsurvey = Convert.ToString(reader["Total_Survey_Park"]);
 
                         SummarySurveys parkObj = new SummarySurveys();
+                        parkObj.ParkCode = parkcode;
                         parkObj.ParkName = parkname;
                         parkObj.TotalSurveys = Convert.ToInt32(totalsurvey);
 
