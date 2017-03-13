@@ -18,25 +18,10 @@ namespace Capstone.Web.Models
         public string State { get; set; }
         public string ActivityLevel { get; set; }
 
-        public static List<SelectListItem> ParksCode
+        public List<SelectListItem> ParksCode
         {
-            get
-            {
-                return new List<SelectListItem>()
-                {
-                    new SelectListItem {Text="Glacier National Park", Value="GNP" },
-                    new SelectListItem {Text="Grand Canyon National Park", Value="GCNP" },
-                    new SelectListItem {Text="Grand Teton National Park", Value="GTNP" },
-                    new SelectListItem {Text="Mount Ranier National Park",Value="MRNP" },
-                    new SelectListItem {Text="Great Smoky Mountain National Park", Value="GSMNP" },
-                    new SelectListItem {Text="Everglades National Park",Value="ENP" },
-                    new SelectListItem {Text="Yellowstone National Park",Value= "YNP" },
-                    new SelectListItem {Text="Yosemite National Park", Value="YNP2" },
-                    new SelectListItem {Text="Cuyahoga Valley National Park", Value="CVNP" },
-                    new SelectListItem {Text="Rocky Mountain National Park", Value="RMNP" }
-                };
-            }
-        }
+            get;
+        } = new List<SelectListItem>();
 
         public static List<SelectListItem>ActivityLevels
         {

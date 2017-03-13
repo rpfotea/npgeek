@@ -34,7 +34,16 @@ namespace Capstone.Web.Controllers
         {
             // var park = GetParkForDisplay().Find(park => park.ParkCode == id.ToUpper());
             Park park = npGeekDal.GetParkForDisplay(id);
-            return View("Detail", park);
+
+            if(park != null)
+            {
+                return View("Detail", park);
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+            
         }
 
 
@@ -60,22 +69,17 @@ namespace Capstone.Web.Controllers
         //        unit = "fahrenheit";
         //    }
         //    Session["TempUnit"] = unit;
-
-        //    if (unit == "fahrenheit")
-        //    {
-        //        return View("Forecast", weatherDal.GetWeathers(parkId));
-        //    }
-        //    else
-        //    {
-
-
-        //    }
+               //Weather Model from the ddatabase
+               //model.TemperatureUnit = unit;
+        //    
+        //        return View("Forecast", model);
+        
         //}
         //[HttpPost]
         //    public ActionResult Forecast(string tempUnit)
         //    {
         //        Session["TempUnit"] = tempUnit;
-        //        Redirect("Forecast", weatherDal.GetWeathers(parkId)));
+        //          return Redirect(Request.Referrer.ToString());
         //    }
 
 
@@ -84,7 +88,13 @@ namespace Capstone.Web.Controllers
         [HttpGet]
         public ActionResult Survey()
         {
-            return View("Survey");
+            List<Park> parks = npGeekDal.GetParks();
+            Survey model = new Survey();
+            foreach(Park park in parks)
+            {
+                model.ParksCode.Add(new SelectListItem() { Text = park.ParkName, Value = park.ParkCode });
+            }
+            return View("Survey", model);
         }
 
         [HttpPost]

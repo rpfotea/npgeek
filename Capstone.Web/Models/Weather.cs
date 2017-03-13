@@ -14,7 +14,7 @@ namespace Capstone.Web.Models
         public int High { get; set; }
         public string Forecast { get; set; }
         public string Recomendation { get; set; }
-        //public string TempUnit { get; set; }
+        public string TempUnit { get; set; }
         
         
         public string GetRecomendation(string forcast, int min, int max)
@@ -51,10 +51,24 @@ namespace Capstone.Web.Models
 
             return output;
         }
+
+        public int GetDisplayTemperature(int temp)
+        {
+            if(TempUnit== "fahrenheit")
+            {
+                return temp;
+            }
+            else
+            {
+                return (int)((temp - 32) / 1.8);
+            }
+            
+        }
+
+
         public int ConverterFToC(int temp)
         {
             return  (int)((temp - 32) / 1.8);
-
         }
                       
     }
